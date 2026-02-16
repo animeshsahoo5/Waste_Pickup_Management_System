@@ -16,6 +16,14 @@ app.get("/", (req, res) => {
   res.send("WPMS API Running...");
 });
 
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
+//test Routes
+const testRoutes = require("./routes/testRoutes");
+app.use("/api/test", testRoutes);
+
+
 // Connect Database
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
