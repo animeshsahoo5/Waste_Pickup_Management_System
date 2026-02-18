@@ -4,12 +4,13 @@ const Pickup = require("../models/Pickup");
 // 1️⃣ Create Pickup Request
 exports.createPickup = async (req, res) => {
   try {
-    const { wasteType, preferredDate } = req.body;
+    const { wasteType, preferredDate, area } = req.body;
 
     const pickup = await Pickup.create({
       resident: req.user._id,
       wasteType,
-      preferredDate
+      preferredDate,
+      area
     });
 
     res.status(201).json(pickup);

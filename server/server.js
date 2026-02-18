@@ -22,6 +22,10 @@ app.use("/api/auth", authRoutes);
 const pickupRoutes = require("./routes/pickupRoutes");
 app.use("/api/pickups", pickupRoutes);
 
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/api/admin", adminRoutes);
+
+
 
 //test Routes
 const testRoutes = require("./routes/testRoutes");

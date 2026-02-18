@@ -6,14 +6,25 @@ const pickupSchema = new mongoose.Schema({
     ref: "User",
     required: true
   },
+  collector: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
   wasteType: {
     type: String,
     enum: ["dry", "wet", "mixed"],
     required: true
   },
+  area: {
+    type: String,
+    required: true
+  },
   preferredDate: {
     type: Date,
     required: true
+  },
+  assignedDate: {
+    type: Date
   },
   status: {
     type: String,
@@ -21,5 +32,6 @@ const pickupSchema = new mongoose.Schema({
     default: "pending"
   }
 }, { timestamps: true });
+
 
 module.exports = mongoose.model("Pickup", pickupSchema);
