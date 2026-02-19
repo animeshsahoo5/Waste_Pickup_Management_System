@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+// const { connectDB } = require("./config/db");
 
 dotenv.config();
 
@@ -25,6 +26,8 @@ app.use("/api/pickups", pickupRoutes);
 const adminRoutes = require("./routes/adminRoutes");
 app.use("/api/admin", adminRoutes);
 
+const collectorRoutes = require("./routes/collectorRoutes");
+app.use("/api/collector", collectorRoutes);
 
 
 //test Routes
@@ -41,4 +44,5 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  // connectDB();
 });

@@ -38,7 +38,7 @@ exports.getAllPickups = async (req, res) => {
 
     const pickups = await Pickup.find(filter)
       .populate("resident", "name email")
-      .populate("collector", "name email")
+      .populate("assignedCollector", "name email")
       .sort({ createdAt: -1 });
 
     res.json(pickups);
@@ -68,7 +68,7 @@ exports.assignCollector = async (req, res) => {
       return res.status(404).json({ message: "Collector not found" });
     }
 
-    pickup.collector = collectorId;
+    pickup.assignedCollector = collectorId;
     pickup.assignedDate = assignedDate;
     pickup.status = "assigned";
 

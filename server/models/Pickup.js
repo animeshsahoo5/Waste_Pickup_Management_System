@@ -6,10 +6,6 @@ const pickupSchema = new mongoose.Schema({
     ref: "User",
     required: true
   },
-  collector: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  },
   wasteType: {
     type: String,
     enum: ["dry", "wet", "mixed"],
@@ -30,7 +26,16 @@ const pickupSchema = new mongoose.Schema({
     type: String,
     enum: ["pending", "assigned", "completed", "cancelled"],
     default: "pending"
-  }
+  },
+  assignedCollector: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    default: null,
+    },
+  remarks: {
+    type: String,
+    default: "",
+  },
 }, { timestamps: true });
 
 
